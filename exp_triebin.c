@@ -159,7 +159,7 @@ bool searchTrieBin(TrieBin *trieBin, char *seq, int k) {
 
 void destroyTrieBinNode(TrieBinNode *node) {
     if (node == NULL) return;
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 2; i++) {
         destroyTrieBinNode(node->children[i]);
     }
     free(node);
@@ -167,7 +167,7 @@ void destroyTrieBinNode(TrieBinNode *node) {
 
 void destroyTrieBin(TrieBin *trieBin) {
     if (trieBin == NULL) return;
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 2; i++) {
         destroyTrieBinNode(trieBin->children[i]);
     }
     free(trieBin);

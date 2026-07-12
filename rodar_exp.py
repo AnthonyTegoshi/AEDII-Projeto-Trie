@@ -34,6 +34,7 @@ experimentoVarBanco = [
 # experimento variando tamanho do banco e consultas para analisar os tempos de execução de forma separada
 with open(prefixo_resultado + "_duplvar.csv", "w") as f:
     for arq1, arq2 in experimentoDuplVar:
+        print(f"duplvar: {arq1} {arq2}")
         saida = subprocess.check_output(
             [programa, arq1, arq2],
             text=True
@@ -43,6 +44,7 @@ with open(prefixo_resultado + "_duplvar.csv", "w") as f:
 # experimento variando o número de consultas para um banco grande do mesmo tamanho
 with open(prefixo_resultado + "_varconsulta.csv", "w") as f:
     for arq1, arq2 in experimentoVarConsulta:
+        print(f"varconsulta: {arq1} {arq2}")
         saida = subprocess.check_output(
             [programa, arq1, arq2],
             text=True
@@ -52,6 +54,7 @@ with open(prefixo_resultado + "_varconsulta.csv", "w") as f:
 # experimento variando tamanho do banco e fazendo mesmo quantidade pequena de consultas
 with open(prefixo_resultado + "_varbanco.csv", "w") as f:
     for arq1, arq2 in experimentoVarBanco:
+        print(f"varbanco: {arq1} {arq2}")
         saida = subprocess.check_output(
             [programa, arq1, arq2],
             text=True
