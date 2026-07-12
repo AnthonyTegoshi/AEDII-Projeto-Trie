@@ -1,0 +1,59 @@
+import subprocess
+import sys
+
+programa = sys.argv[1]
+prefixo_resultado = sys.argv[2]
+
+experimentoDuplVar = [
+    ("bancos/seq_31_5000.txt", "consultas/seq_31_5000.txt"),
+    ("bancos/seq_31_10000.txt", "consultas/seq_31_10000.txt"),
+    ("bancos/seq_31_50000.txt", "consultas/seq_31_50000.txt"),
+    ("bancos/seq_31_100000.txt", "consultas/seq_31_100000.txt"),
+    ("bancos/seq_31_500000.txt", "consultas/seq_31_500000.txt"),
+    ("bancos/seq_31_1000000.txt", "consultas/seq_31_1000000.txt")
+]
+
+experimentoVarConsulta = [
+    ("bancos/seq_31_1000000.txt", "consultas/seq_31_5000.txt"),
+    ("bancos/seq_31_1000000.txt", "consultas/seq_31_10000.txt"),
+    ("bancos/seq_31_1000000.txt", "consultas/seq_31_50000.txt"),
+    ("bancos/seq_31_1000000.txt", "consultas/seq_31_100000.txt"),
+    ("bancos/seq_31_1000000.txt", "consultas/seq_31_500000.txt"),
+    ("bancos/seq_31_1000000.txt", "consultas/seq_31_1000000.txt")
+]
+
+experimentoVarBanco = [
+    ("bancos/seq_31_5000.txt", "consultas/seq_31_5000.txt"),
+    ("bancos/seq_31_10000.txt", "consultas/seq_31_5000.txt"),
+    ("bancos/seq_31_50000.txt", "consultas/seq_31_5000.txt"),
+    ("bancos/seq_31_100000.txt", "consultas/seq_31_5000.txt"),
+    ("bancos/seq_31_500000.txt", "consultas/seq_31_5000.txt"),
+    ("bancos/seq_31_1000000.txt", "consultas/seq_31_5000.txt")
+]
+
+# experimento variando tamanho do banco e consultas para analisar os tempos de execução de forma separada
+with open(prefixo_resultado + "_duplvar.csv", "w") as f:
+    for arq1, arq2 in experimentoDuplVar:
+        saida = subprocess.check_output(
+            [programa, arq1, arq2],
+            text=True
+        )
+        f.write(saida)
+
+# experimento variando o número de consultas para um banco grande do mesmo tamanho
+with open(prefixo_resultado + "_varconsulta.csv", "w") as f:
+    for arq1, arq2 in experimentoVarConsulta:
+        saida = subprocess.check_output(
+            [programa, arq1, arq2],
+            text=True
+        )
+        f.write(saida)
+
+# experimento variando tamanho do banco e fazendo mesmo quantidade pequena de consultas
+with open(prefixo_resultado + "_varbanco.csv", "w") as f:
+    for arq1, arq2 in experimentoVarBanco:
+        saida = subprocess.check_output(
+            [programa, arq1, arq2],
+            text=True
+        )
+        f.write(saida)
