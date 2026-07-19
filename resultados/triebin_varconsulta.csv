@@ -1,4 +1,4 @@
-Inserções,Tempo Inserção,Buscas,Tempo Busca,Nós Trie,Espaço Aprox. (kB)
+Inserções,Tempo Inserção (s),Buscas,Tempo Busca (s),Nós Trie,Espaço Aprox. (kB)
 1000000,4.596,5000,0.007,43179228,1012013.16
 1000000,4.457,10000,0.015,43179228,1012013.16
 1000000,4.152,50000,0.078,43179228,1012013.16
